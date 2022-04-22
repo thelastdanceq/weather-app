@@ -21,6 +21,8 @@ getLoc.then(data => {
             let nameField = document.querySelector('#name');
             let degreeField = document.querySelector('#degree');
             let statusField = document.querySelector('#status');
+            let mapField = document.querySelector('#map');
+            
             nameField.innerHTML = data.name;
             degreeField.innerHTML = Math.round(data.main.temp - 273)+' &deg;';
             statusField.innerHTML = data.weather[0]['description']
