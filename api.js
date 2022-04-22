@@ -18,6 +18,12 @@ getLoc.then(data => {
         .then(response => response.json())
         .then((data) => {
             console.log(data);
+            let nameField = document.querySelector('#name');
+            let degreeField = document.querySelector('#degree');
+            let statusField = document.querySelector('#status');
+            nameField.innerHTML = data.name;
+            degreeField.innerHTML = Math.round(data.main.temp - 273);
+            statusField.innerHTML = data.weather[0]['description']
         })
         .catch(err => console.log(err));
 
