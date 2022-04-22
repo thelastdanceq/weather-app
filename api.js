@@ -15,11 +15,11 @@ getLoc.then(data => {
     const lon = (data.coords.longitude.toFixed(2));
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`)
-    .then(response => response.json())
-    .then((data) => {
-        console.log(data);
-    })
-    .catch(err => console.log(err));
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch(err => console.log(err));
 
 })
 
