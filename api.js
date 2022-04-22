@@ -22,7 +22,7 @@ getLoc.then(data => {
             let degreeField = document.querySelector('#degree');
             let statusField = document.querySelector('#status');
             nameField.innerHTML = data.name;
-            degreeField.innerHTML = Math.round(data.main.temp - 273);
+            degreeField.innerHTML = Math.round(data.main.temp - 273)+' &deg;';
             statusField.innerHTML = data.weather[0]['description']
         })
         .catch(err => console.log(err));
