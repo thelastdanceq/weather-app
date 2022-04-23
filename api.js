@@ -75,4 +75,6 @@ getLoc.then(data => {
 
 
 
+function chooseImage(temp, weather, windSpeed) {
 
+}
