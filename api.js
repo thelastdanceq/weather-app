@@ -13,68 +13,90 @@ const getLoc = new Promise((resolve, reject) => {
 getLoc.then(data => {
     const lat = (data.coords.latitude.toFixed(2));
     const lon = (data.coords.longitude.toFixed(2));
-
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,current,hourly,alerts&appid=${APIKEY}`)
-        .then(response => {
-            return response.json()
-        })
+        .then((response) => { return response.json() })
         .then((data) => {
             console.log(data);
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}`)
+                .then((response) => { return response.json() })
+                .then((data1) => {
+                    console.log(data1);
+                    let wrapper = document.querySelector('#wrapper');
+                    let forecast = document.querySelector('#forecast');
+                    let div = document.createElement('div');
+                    div.classList.add('day', 'now');
 
-            let wrapper = document.querySelector('wrapper');
+                    let place = document.createElement('span');
+                    place.innerHTML = data1.name;
+                    let tempNow = document.createElement('p');
+
+                    tempNow.innerHTML = Math.round(data1.main.temp - 273) + ' &deg;';
+                    div.appendChild(place);
+                    div.appendChild(document.createElement('br'));
+                    div.appendChild(tempNow);
+
+
+
+                    wrapper.appendChild(div);
+                    wrapper.insertBefore(div, forecast);
+
+                });
+
+
+            let wrapper = document.querySelector('#wrapper');
             let forecast = document.querySelector('#forecast');
 
             let place = document.createElement('p');
             data.daily.forEach((date, index) => {
                 let div = document.createElement('div');
                 div.classList.add('day');
-                if(index == 0){
+                if (index == 0) {
                     return;
                 }
 
-                    let dateDt = new Date(date.dt * 1000);
-                    let day = dateDt.getDay();
-                    switch (day) {
-                        case 6:
-                            div.innerHTML = 'Sunday';
-                            break;
+                let dateDt = new Date(date.dt * 1000);
+                let day = dateDt.getDay();
+                switch (day) {
+                    case 6:
+                        div.innerHTML = 'Sunday';
+                        break;
 
-                        case 5:
-                            div.innerHTML = 'Saturday';
+                    case 5:
+                        div.innerHTML = 'Saturday';
 
-                            break;
-                        case 4:
+                        break;
+                    case 4:
 
-                            div.innerHTML = 'Friday';
+                        div.innerHTML = 'Friday';
 
-                            break;
-                        case 3:
-                            div.innerHTML = 'Thursday';
+                        break;
+                    case 3:
+                        div.innerHTML = 'Thursday';
 
-                            break;
-                        case 2:
-                            div.innerHTML = 'Wednesday';
+                        break;
+                    case 2:
+                        div.innerHTML = 'Wednesday';
 
-                            break;
-                        case 1:
-                            div.innerHTML = 'Tuesday';
+                        break;
+                    case 1:
+                        div.innerHTML = 'Tuesday';
 
-                            break;
-                        case 0:
-                            div.innerHTML = 'Monday';
+                        break;
+                    case 0:
+                        div.innerHTML = 'Monday';
 
-                            break;
-                    }
-                    let temp = Math.round(date.temp.day - 273);
-                    let p = document.createElement('p');
-                    p.innerHTML = temp + '&deg;';
-                    div.appendChild(p)
-                    forecast.appendChild(div);
-                
+                        break;
+                }
+                let temp = Math.round(date.temp.day - 273);
+                let p = document.createElement('p');
+                p.innerHTML = temp + '&deg;';
+                div.appendChild(p)
+                forecast.appendChild(div);
+
             });
         })
         .catch(err => {
-            console.error(err);
+            console.log(err);
         });
 
 })
