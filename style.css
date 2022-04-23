@@ -1,8 +1,12 @@
-body{
-    font-family: "Gill Sans", sans-serif; 
-    height: 800px;  
+body {
+    font-family: "Gill Sans", sans-serif;
+    height: 100%;
+    font-size: 20px;
+    color: aliceblue;
 }
-#wrapper {
+
+#wrapper {  
+    display: flex;
     width: 50%;
     height: 75%;
     border-radius: 10px;
@@ -30,8 +34,23 @@ body{
 #status {
     margin: 0px;
 }
-#forecast{
+
+#forecast {
     display: flex;
     width: 100%;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.day {
+    margin: 5px;
+}
+.now{
+    border: 3px solid  #7f73d2;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.now p{
+    font-size: 28px;
 }

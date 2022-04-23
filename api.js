@@ -18,12 +18,14 @@ getLoc.then(data => {
         .then(response => {
             return response.json()
         })
-        .then(data => {
+        .then((data) => {
             console.log(data);
             let forecast = document.querySelector('#forecast');
-            data.daily.forEach(date => {
+            data.daily.forEach((date, index) => {
+
                 let div = document.createElement('div');
                 div.classList.add('day');
+                if (index === 0) div.classList.add('now');
 
                 let dateDt = new Date(date.dt * 1000);
                 let day = dateDt.getDay();
