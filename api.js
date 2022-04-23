@@ -26,7 +26,7 @@ getLoc.then(data => {
             degreeField.innerHTML = Math.round(data.main.temp - 273) + ' &deg;';
             statusField.innerHTML = data.weather[0]['description']
 
-
+            
         })
         .catch(err => console.log(err));
 
