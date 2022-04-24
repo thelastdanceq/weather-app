@@ -30,11 +30,14 @@ getLoc.then(data => {
                         case 'Clouds':
                             if (data1.main.temp - 273 > 0 && data1.main.temp - 273 <= 20) {
                                 image = "/images/photo_2022-04-24_12-24-43-removebg-preview.png"
+                                imageIcon = '/images/icons8-ветреная-погода-96.png'
                             }
                             break;
 
                         case 'Clear':
                             image = "/images/icons8-солнце-16.png"
+                            imageIcon = '/images/icons8-лето-96.png'
+
                             break;
                         case 'Snow':
                             image = "/images/icons8-метель-16.png"
@@ -42,6 +45,7 @@ getLoc.then(data => {
                         case "Rain":
                             if (data1.main.temp - 273 > 0 && data1.main.temp - 273 <= 20) {
                                 image = "/images/photo_2022-04-24_11-10-06-removebg-preview.png"
+                                imageIcon = '/images/icons8-сильный-дождь-96.png'
                             }
                             break;
                         case "Drizzle":
@@ -52,11 +56,17 @@ getLoc.then(data => {
                             break;
                     }
                     let imageNowDiv = document.createElement('div');
+                    imageNowDiv.classList.add('imgs');
                     let imageNow = document.createElement('img');
+                    let iconNow = document.createElement('img');
+                    iconNow.src = imageIcon;
+                    iconNow.height = '100';
+                    iconNow.width = '100';
                     imageNow.src = image;
                     let place = document.createElement('p');
                     place.innerHTML = data1.name
                     imageNow.height = '300';
+                    imageNowDiv.appendChild(iconNow)
                     imageNowDiv.appendChild(imageNow);
                     now.appendChild(place);
                     now.appendChild(imageNowDiv)
@@ -66,10 +76,8 @@ getLoc.then(data => {
                 });
 
 
-            let wrapper = document.querySelector('#wrapper');
             let forecast = document.querySelector('#forecast');
 
-            let place = document.createElement('p');
             data.daily.forEach((date, index) => {
                 let div = document.createElement('div');
                 div.classList.add('day');
