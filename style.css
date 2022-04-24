@@ -5,7 +5,7 @@ body {
     color: aliceblue;
 }
 
-#wrapper {  
+#wrapper {
     display: flex;
     flex-direction: column;
     width: 95%;
@@ -40,7 +40,7 @@ body {
 
 #forecast {
     display: flex;
-    
+
     width: 100%;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -49,20 +49,30 @@ body {
 .day {
     margin: 5px;
 }
-#now{
+
+#now {
     display: flex;
     text-align: center;
     justify-content: center;
     flex-direction: column;
     margin: 0px;
-    border: 3px solid  #7f73d2;
+    border: 3px solid #7f73d2;
     border-radius: 15px;
     width: 100%;
 }
 
-.now p{
+.now p {
     font-size: 28px;
 }
-.place{
+
+.place {
     width: 100%;
+}
+
+.imgs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }

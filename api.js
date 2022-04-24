@@ -73,7 +73,8 @@ getLoc.then(data => {
             data.daily.forEach((date, index) => {
                 let div = document.createElement('div');
                 div.classList.add('day');
-                let imageDay
+                let imageDay;
+                let imageIcon;
                 let dateDt = new Date(date.dt * 1000);
                 let day = dateDt.getDay();
                 switch (day) {
@@ -110,15 +111,16 @@ getLoc.then(data => {
                 let temp = Math.round(date.temp.day - 273);
                 switch (date.weather[0].main) {
                     case 'Clouds':
-                        console.log(date.temp.day - 273);
                         if (date.temp.day - 273 > 0 && date.temp.day - 273 <= 20) {
                             imageDay = "/images/photo_2022-04-24_12-24-43-removebg-preview.png"
+                            imageIcon = '/images/icons8-ветреная-погода-96.png'
                         }
                         break;
 
                     case 'Clear':
                         if (date.temp.day - 273 > 0 && date.temp.day - 273 <= 20) {
                             imageDay = "/images/photo_2022-04-24_12-19-16-removebg-preview.png"
+                            imageIcon = '/images/icons8-лето-96.png'
                         }
                         break;
                     case 'Snow':
@@ -127,6 +129,7 @@ getLoc.then(data => {
                     case "Rain":
                         if (temp > 0 && temp <= 20) {
                             imageDay = "/images/photo_2022-04-24_11-10-06-removebg-preview.png"
+                            imageIcon = '/images/icons8-сильный-дождь-96.png'
                         }
                         break;
                     case "Drizzle":
@@ -140,7 +143,13 @@ getLoc.then(data => {
                 let p = document.createElement('p');
                 p.innerHTML = temp + '&deg;';
                 let imgDay = document.createElement('img');
+                let iconNow = document.createElement('img');
+                iconNow.src = imageIcon;
+                iconNow.height = '100';
+                iconNow.width = '100';
                 let imgDayDiv = document.createElement('div');
+                imgDayDiv.classList.add('imgs');
+                imgDayDiv.appendChild(iconNow);
                 imgDayDiv.appendChild(imgDay);
                 imgDay.src = imageDay;
                 imgDay.classList.add('image');
