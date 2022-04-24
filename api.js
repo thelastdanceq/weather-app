@@ -85,34 +85,36 @@ getLoc.then(data => {
                 let imageIcon;
                 let dateDt = new Date(date.dt * 1000);
                 let day = dateDt.getDay();
+                let dateOfDay = dateDt.getMonth() + 1 + '.' + Number.parseInt(dateDt.getDate() );
+                console.log(dateDt.getMonth() +" "+ dateDt.getDate());
                 switch (day) {
                     case 6:
-                        div.innerHTML = 'Воскресение';
+                        div.innerHTML = 'Воскресение ' + dateOfDay;
                         break;
 
                     case 5:
-                        div.innerHTML = 'Суббота';
+                        div.innerHTML = 'Суббота ' + dateOfDay;
 
                         break;
                     case 4:
 
-                        div.innerHTML = 'Пятница';
+                        div.innerHTML = 'Пятница ' + dateOfDay;
 
                         break;
                     case 3:
-                        div.innerHTML = 'Четверг';
+                        div.innerHTML = 'Четверг ' + dateOfDay;
 
                         break;
                     case 2:
-                        div.innerHTML = 'Среда';
+                        div.innerHTML = 'Среда ' + dateOfDay;
 
                         break;
                     case 1:
-                        div.innerHTML = 'Вторник';
+                        div.innerHTML = 'Вторник ' + dateOfDay;
 
                         break;
                     case 0:
-                        div.innerHTML = 'Понедельник';
+                        div.innerHTML = 'Понедельник ' + dateOfDay;
 
                         break;
                 }
