@@ -26,26 +26,29 @@ getLoc.then(data => {
 
                     tempNow.innerHTML = Math.round(data1.main.temp - 273) + '&deg;';
                     let image;
+                    let iconNowImage;
                     switch (data1.weather[0].main) {
                         case 'Clouds':
-                            if (data1.main.temp - 273 > 0 && data1.main.temp - 273 <= 20) {
+                            if (Math.round(data1.main.temp - 273) > 0 && Math.round(data1.main.temp - 273) <= 20) {
                                 image = "/images/photo_2022-04-24_12-24-43-removebg-preview.png"
-                                imageIcon = '/images/icons8-ветреная-погода-96.png'
+                                iconNowImage = '/images/icons8-ветреная-погода-96.png'
+                            } else {
                             }
                             break;
 
                         case 'Clear':
+                            console.log('clear');
                             image = "/images/icons8-солнце-16.png"
-                            imageIcon = '/images/icons8-лето-96.png'
+                            iconNowImage = '/images/icons8-лето-96.png'
 
                             break;
                         case 'Snow':
                             image = "/images/icons8-метель-16.png"
                             break;
                         case "Rain":
-                            if (data1.main.temp - 273 > 0 && data1.main.temp - 273 <= 20) {
+                            if (Math.round(data1.main.temp - 273)> 0 && Math.round(data1.main.temp - 273) <= 20) {
                                 image = "/images/photo_2022-04-24_11-10-06-removebg-preview.png"
-                                imageIcon = '/images/icons8-сильный-дождь-96.png'
+                                iconNowImage = '/images/icons8-сильный-дождь-96.png'
                             }
                             break;
                         case "Drizzle":
@@ -59,7 +62,7 @@ getLoc.then(data => {
                     imageNowDiv.classList.add('imgs');
                     let imageNow = document.createElement('img');
                     let iconNow = document.createElement('img');
-                    iconNow.src = imageIcon;
+                    iconNow.src = iconNowImage;
                     iconNow.height = '100';
                     iconNow.width = '100';
                     imageNow.src = image;
